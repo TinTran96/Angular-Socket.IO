@@ -29,8 +29,8 @@ Go to `db.js` file and config for MongoDB
        var database = db.db('<db name>');
        
 I'm using [mLab](https://mlab.com/) free MongoDB, for example
-* <Mongo URL DB HERE> : mongodb://<dbuser>:<dbpassword>@ds036617.mlab.com:36617/testingmongo
-* <db name> : testingmongo
+* MongoDB URL : mongodb://<dbuser>:<dbpassword>@ds036617.mlab.com:36617/testingmongo
+* DB name : testingmongo
   
 
 
