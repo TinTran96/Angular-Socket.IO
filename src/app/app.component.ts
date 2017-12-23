@@ -10,25 +10,34 @@ export class AppComponent  {
   title = 'app';
   private socket:any;
   private numberOfOnlineUsers: number;
-  private notification:any="";
+  private chatLog:any=[];
+  private username:any="";
+  private content:any="";
 
   constructor(){
     this.socket = io();
   }
 
   ngOnInit() {
+    //fetch Data from Nodejs server
     this.socket.on('numberOfOnlineUsers',(numberOfOnlineUsers)=>{
       this.numberOfOnlineUsers = numberOfOnlineUsers;
     });
-    this.socket.on('pushNotification',(pushNotification)=>{
-      this.notification = pushNotification;
+    this.socket.on('chatLog',(chatLog)=>{
+      this.chatLog = chatLog;
     });
   }
 
-  pushButton()
+  /**
+   * onSubmit submit data to NodeJS server
+   */
+  onSubmit()
   {
-    this.socket.emit('pushButton', 'tobi', (data) => {
-      console.log(data); // data will be 'woot'
+    var param={
+      'username':this.username,
+      'content':this.content
+    };
+    this.socket.emit('onSubmit', param, (data) => {
     });
   }
 }
